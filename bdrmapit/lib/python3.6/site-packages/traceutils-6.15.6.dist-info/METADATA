@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: traceutils
+Version: 6.15.6
+Summary: Various packages for traceroute and BGP dump analysis.
+Home-page: https://github.com/alexmarder/traceutils
+Author: Alex Marder
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >3.6
+Requires-Dist: ujson
+Requires-Dist: cython
+
+UNKNOWN
+
+
