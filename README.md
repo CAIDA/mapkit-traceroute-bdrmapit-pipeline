@@ -39,7 +39,7 @@ And set the virtual environment as the active development environment:
 
 `source bdrmapit/bin/activate`
 
-## Step 3. Install requirement libraries:
+## Step 3. Install requirement libraries
 
 `pip install Cython`
 
@@ -47,10 +47,10 @@ And set the virtual environment as the active development environment:
 
 `pip install requests`
 
-#Running bdrmapit. 
+# Running bdrmapit
 Start here on subsequent runs after first-time installation.
-Update the fields labeled "change-me" in the config.py with the correct dates and directories. 
-If you are using RIPE traceroutes, this is the only file you should need to modify. 
+Update the fields labeled `change-me` in the config.py with the correct dates and directories. 
+If you are using RIPE traceroutes, this is the only file you need to modify. 
 
 ## Step 4. Preparing input data files
 
@@ -62,9 +62,7 @@ The following two sub-steps (4.1. and 4.2.) may be executed in parallel for effi
 
 See https://alexmarder.github.io/ip2as/ for a description of this intermediary input.
 
-
-
-#### 4.1.1. Download RIR files (and save list of downloaded files to an RIR file itself, which is an input to ip2as later on), AS Relationships file, Customer Cone file, PeeringDB file, then run ip2as; the below script does all of this:
+#### 4.1.1. Download: RIR files (and save list of downloaded files to an RIR file itself, which is an input to ip2as later on), AS Relationships file, Customer Cone file, PeeringDB file. Then, run ip2as. The below script does all of this:
 
 `python ip2as-prepare-inputs-and-run.py`
 
@@ -90,7 +88,8 @@ Note: the below script is a wrapper for a previous script written by Elverton an
 The final output of bdrmapIT is in `output/bdrmapit_output.csv`; the last two columns are for internal debugging and should be ignored.
 
 # Parallel Execution Note 
-Any of the above steps may be concatenated to run in sequence by separating them with a semicolon. For instance, to run steps 5.2 - 5.3:
+Any of the above steps (except for screen creation) may be concatenated 
+to run in sequence by separating them with a semicolon. For instance, to run steps 5.2 - 5.3:
 
 `python create-json-config-and-run-bdrmapit.py; python convert-sql-to-csv.py`
 
