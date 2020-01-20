@@ -13,7 +13,7 @@ Development greatly benefitted from a previous version by Elverton Carvalho Fazz
 
 #### 1.1.1. Installing bdrmapit
 
-$ git clone https://github.com/alexmarder/bdrmapit
+`git clone https://github.com/alexmarder/bdrmapit`
 
 To create your own installation, you may follow the instructions here:
 
@@ -23,29 +23,29 @@ In subsequent steps, make sure to replace "bdrmapit/" with your installation dir
 
 #### 1.1.2. Installing ip2as
 
-$ git clone https://github.com/alexmarder/ip2as/
+`git clone https://github.com/alexmarder/ip2as/`
 
 ### 1.2. It's probably a good idea to run subsequent steps on a screen
 
-$ screen -S pipeline
+`screen -S pipeline`
 
 ## Step 2. Create a virtual environment pointing to the bdrmapit subdirectory
 
 See https://virtualenv.pypa.io/en/latest/ if you are unfamiliar with virtualenv. Create the virtual environment:
 
-$ virtualenv --python=/usr/bin/python3 bdrmapit/
+`virtualenv --python=/usr/bin/python3 bdrmapit/`
 
 And set the virtual environment as the active development environment:
 
-$ source bdrmapit/bin/activate
+`source bdrmapit/bin/activate`
 
 ## Step 3. Install requirement libraries:
 
-$ pip install Cython
+`pip install Cython`
 
-$ pip install traceutils
+`pip install traceutils`
 
-$ pip install requests
+`pip install requests`
 
 #Running bdrmapit. 
 Start here on subsequent runs after first-time installation.
@@ -64,33 +64,33 @@ See https://alexmarder.github.io/ip2as/ for a description of this intermediary i
 
 
 
-#### 4.1.1. Download RIR files (and save list of downloaded files to an RIR file itself), as-rel file, cust-cone file, peeringdb file, then run ip2as; the below script does all of this:
+#### 4.1.1. Download RIR files (and save list of downloaded files to an RIR file itself, which is an input to ip2as later on), AS Relationships file, Customer Cone file, PeeringDB file, then run ip2as; the below script does all of this:
 
-$ python ip2as-prepare-inputs-and-run.py
+`python ip2as-prepare-inputs-and-run.py`
 
 ### 4.2. You may now download a subset of all RIPE traceroutes from the last month:
 Note: the below script is a wrapper for a previous script written by Elverton and Rafael.
 
-$ python python download_ripe_traces.py
+`python download_ripe_traces.py`
 
 ## Step 5. Running bdrmapit.
 
 ### 5.1. It's probably a good idea to run this on a screen:
 
-$ screen -S pipeline
+`screen -S pipeline`
 
 ### 5.2. Configure and run bdrmapit:
 
-$ python create-json-config-and-run-bdrmapit.py
+`python create-json-config-and-run-bdrmapit.py`
 
 ### 5.3 Convert SQL output to csv:
 
-$ python convert-sql-to-csv.py
+`python convert-sql-to-csv.py`
 
-The final output of bdrmapIT is in output/bdrmapit_output.csv; the last two columns are for internal debugging and should be ignored.
+The final output of bdrmapIT is in `output/bdrmapit_output.csv`; the last two columns are for internal debugging and should be ignored.
 
 # Parallel Execution Note 
 Any of the above steps may be concatenated to run in sequence by separating them with a semicolon. For instance, to run steps 5.2 - 5.3:
 
-$ python create-json-config-and-run-bdrmapit.py; python convert-sql-to-csv.py
+`python create-json-config-and-run-bdrmapit.py; python convert-sql-to-csv.py`
 
