@@ -7,7 +7,7 @@ Development greatly benefitted from a previous version by Elverton Carvalho Fazz
 
 ## Step 1. Clone the repo
 
-$ git clone https://github.com/CAIDA/mapkit-traceroute-bdrmapit-pipeline
+`git clone https://github.com/CAIDA/mapkit-traceroute-bdrmapit-pipeline`
 
 ### 1.1. [Optional] You may remove our installation of bdrmapit and ip2as (fetched and built in Dec. 2019) and install your own.
 
@@ -21,15 +21,18 @@ https://alexmarder.github.io/bdrmapit/
 
 In subsequent steps, make sure to replace "bdrmapit/" with your installation directory.
 
-#### 1.1.2. Installing ip2as:
+#### 1.1.2. Installing ip2as
 
 $ git clone https://github.com/alexmarder/ip2as/
 
-1.2. It's probably a good idea to run this on a screen:
+### 1.2. It's probably a good idea to run subsequent steps on a screen
 
 $ screen -S pipeline
 
-## Step 2. Create a virtual environment pointing to the bdrmapit subdirectory: 
+## Step 2. Create a virtual environment pointing to the bdrmapit subdirectory
+
+See https://virtualenv.pypa.io/en/latest/ if you are unfamiliar with virtualenv. Create the virtual environment:
+
 $ virtualenv --python=/usr/bin/python3 bdrmapit/
 
 And set the virtual environment as the active development environment:
