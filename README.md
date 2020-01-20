@@ -1,6 +1,7 @@
-This script downloads and prepares all the inputs required to run bdrmapIT on a set of recent traceroutes from RIPE. 
-Developed by Alexander Gamero-Garrido, CAIDA - UC San Diego
-Development greatly benefitted from a previous version by Elverton Carvalho Fazzion and Rafael Almeida
+This script downloads and prepares all the inputs required to run BdrmapIT on a set of recent traceroutes from RIPE. 
+Developed by Alexander Gamero-Garrido, CAIDA - UC San Diego.
+
+Development greatly benefitted from a previous version by Elverton Carvalho Fazzion and Rafael Almeida.
 
 # First time installation
 
@@ -65,6 +66,7 @@ See https://alexmarder.github.io/ip2as/ for a description of this intermediary i
 $ python ip2as-prepare-inputs-and-run.py
 
 ### 4.2. You may now download a subset of all RIPE traceroutes from the last month:
+Note: the below script is a wrapper for a previous script written by Elverton and Rafael.
 
 $ python python download_ripe_traces.py
 
