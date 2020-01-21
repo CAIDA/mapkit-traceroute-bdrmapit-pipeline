@@ -1,4 +1,4 @@
-This script downloads and prepares all the inputs required to run BdrmapIT on a set of recent traceroutes from RIPE. 
+This set of scripts download and prepare all the inputs required to run BdrmapIT on a set of recent traceroutes from RIPE. 
 Developed by Alexander Gamero-Garrido, CAIDA - UC San Diego.
 
 Development greatly benefitted from a previous version by Elverton Carvalho Fazzion and Rafael Almeida.
