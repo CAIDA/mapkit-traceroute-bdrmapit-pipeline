@@ -48,12 +48,15 @@ And set the virtual environment as the active development environment:
 `pip install requests`
 
 # Running bdrmapit
+
+## Step 4. Preparing config and input data files
+
+### 4.0.1 Change Config File
 Start here on subsequent runs after first-time installation.
 Update the fields labeled `change-me` in the config.py with the correct dates and directories. 
 If you are using RIPE traceroutes, this is the only file you need to modify. 
 
-## Step 4. Preparing input data files
-
+### 4.0.2 Prepare Input Files
 bdrmapit takes several input from CAIDA, PeeringDB and RIRs. Additionally, you'll need a set of traceroutes to use as input. 
 
 The following two sub-steps (4.1. and 4.2.) may be executed in parallel for efficiency (on separate screens).
