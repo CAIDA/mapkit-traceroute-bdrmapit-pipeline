@@ -39,7 +39,9 @@ And set the virtual environment as the active development environment:
 
 `source bdrmapit/bin/activate`
 
-## Step 3. Install requirement libraries (make sure you have the latest version as there are frequent updates with fixes)
+## Step 3. Install requirement libraries 
+
+(make sure you have the latest version as there are frequent updates with fixes)
 
 `pip install Cython`
 
