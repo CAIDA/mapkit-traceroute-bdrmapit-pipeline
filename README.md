@@ -58,7 +58,9 @@ And set the virtual environment as the active development environment:
 ### 4.0.0 Accessing CAIDA's shared installation (if applicable)
 CAIDA's shared installation is located at `beamer.caida.org:/project/mapkit/bdrmapit_pipeline`
 To activate the virtual environment there, run:
+
 `cd /project/mapkit/bdrmapit_pipeline`
+
 `source bdrmapit/bin/activate`
 
 ### 4.0.1 Change Config File
