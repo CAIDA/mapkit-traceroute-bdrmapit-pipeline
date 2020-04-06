@@ -41,8 +41,9 @@ And set the virtual environment as the active development environment:
 
 `source bdrmapit/bin/activate`
 
-## Step 3. Install requirement libraries 
+## Step 3. Install requirement libraries and download RIPE Traceroutes
 
+# Step 3.1
 (make sure you have the latest version as there are frequent updates with fixes)
 
 `pip install Cython`
@@ -50,6 +51,11 @@ And set the virtual environment as the active development environment:
 `pip install traceutils`
 
 `pip install requests`
+
+# Step 3.2 Downloading traceroutes
+You may use this script to download traceroutes directly from RIPE (all public traceroutes from the past 30 days)
+`python download_ripe_traces.py`
+Start and end dates are defined in `config.py` under variables `ripeStart` and `ripeFinish`
 
 # Running bdrmapit
 
