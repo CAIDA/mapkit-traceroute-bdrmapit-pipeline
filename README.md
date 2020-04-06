@@ -54,8 +54,10 @@ And set the virtual environment as the active development environment:
 
 # Step 3.2 Downloading traceroutes
 You may use this script to download traceroutes directly from RIPE (all public traceroutes from the past 30 days)
+
 `python download_ripe_traces.py`
-Start and end dates are defined in `config.py` under variables `ripeStart` and `ripeFinish`
+
+Start and end dates are defined in `config.py` (see step 4.0.1) under variables `ripeStart` and `ripeFinish`
 
 # Running bdrmapit
 
