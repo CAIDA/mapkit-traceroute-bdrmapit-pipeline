@@ -57,7 +57,7 @@ You may use this script to download traceroutes directly from RIPE (all public t
 
 `python download_ripe_traces.py`  
 
-Start and end dates are defined in `config.py` (see step 4.0.1) under variables `ripeStart` and `ripeFinish`
+Start and end dates are defined in `config.py` (see step 4.0.1) under variables `downloadStart` and `downloadFinish`
 
 # Running bdrmapit
 
@@ -73,7 +73,14 @@ To activate the virtual environment there, run:
 
 ### 4.0.1 Change Config File
 Start here on subsequent runs after first-time installation.
-Update the fields labeled `change-me` in the `config.py` file with the correct dates and directories. 
+Update the fields labeled in the `config.py` file with the correct dates and directoriesas follows: 
+
+`change-me-traceroutes` This is the input directory with traceroutes. You will have to change this every time you run the pipeline with a different input. (See step 4.2).
+
+`change-me-inputs` to make the input files point to the right directories and change configuration parameters. The default values will work on CAIDA machines (e.g., beamer.caida.org).
+
+`change-me-external` to fetch input files if you are not running the pipeline on a CAIDA machine.
+
 If you are using RIPE traceroutes, this is the only `.py` file you need to modify. 
 
 ### 4.0.2 Prepare Input Files
@@ -92,8 +99,8 @@ See https://alexmarder.github.io/ip2as/ for a description of this intermediary i
 ### 4.2. Copy or download the RIPE traceroutes you want to use:
 Put any traceroutes you want to use as an input for BdrmapIT in a **subdirectory** of the directory listed in the `config.py` file with variable name `ripeOutput`.
 
-In the default config file, `ripeOutput` points to `/scratch/mapkit/dlripetraces/` which has a set of all publically available RIPE traceroutes in subdirectories as follows:
-`/scratch/mapkit/dlripetraces/2020-03-20/traceroute-2020-03-20T**00.bz2`
+In the default config file, `ripeOutput` points to `/scratch/mapkit/dlripetraces/2020_mar20/` which has a set of all publically available RIPE traceroutes in subdirectories as follows:
+`/scratch/mapkit/dlripetraces/2020_mar20/2020-03-20/traceroute-2020-03-20T**00.bz2`
 where ** is the time of day.
 
 If you are planning on using a large number of traceroutes (i.e., over 5GB), please put the input files in `/scratch/mapkit/<your_subdirectory>` or elsewhere where you have been allocated disk space if that directory is full. **This is to ensure that our production directory at /project/mapkit/ does not run out of space.**
