@@ -1,5 +1,5 @@
 #This configuration file contains all the variables to run bdrmapit on RIPE traceroutes
-#change-me Base and output directory
+#change-me-inputs Base and output directory
 baseDir = "/project/mapkit/bdrmapit_pipeline/"
 outDir = baseDir + "output/"
 
@@ -48,7 +48,7 @@ pfx2as = "/data/routing/routeviews-prefix2as/" + year + "/" + month + "/" + "rou
 #dates of script to download traceroutes 
 #directly from RIPE (README step 3.2)
 #end dates below, as well as a directory to save them to (each day takes about 21G of disk)
-downloadStart = "2020-03-20" #AGG TODO remane these to downloadStart ?
+downloadStart = "2020-03-20" 
 downloadFinish = "2020-03-22" 
 
 #change-me-traceroutes: specify the directory where the RIPE atlas traceroutes are stored *in subdirectories* (see README step 4.2)
