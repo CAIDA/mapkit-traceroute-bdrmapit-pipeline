@@ -7,20 +7,23 @@ year = cfg.year
 month = cfg.month
 as2orgMonth = cfg.as2orgMonth
 pfx2as = cfg.pfx2as
+pdbmonth = cfg.peeringDBMonth
+pdbyear = cfg.peeringDBYear
+
 #Download ip2as inputs
 #Download and decompress RIR delegation files
 os.system("cd ./ip2as")
 dateString = year + month + "01" #first day of the month
 
-os.system("wget https://ftp.apnic.net/stats/afrinic/2019/delegated-afrinic-extended-" + dateString)
+os.system("wget https://ftp.apnic.net/stats/afrinic/" + year + "/delegated-afrinic-extended-" + dateString)
 os.system("wget https://ftp.apnic.net/stats/lacnic/delegated-lacnic-extended-" + dateString)
 os.system("wget https://ftp.apnic.net/stats/arin/delegated-arin-extended-" + dateString)
-os.system("wget https://ftp.apnic.net/stats/apnic/2019/delegated-apnic-extended-" + dateString + ".gz")
-os.system("wget https://ftp.ripe.net/pub/stats/ripencc/2019/delegated-ripencc-extended-" + dateString + ".bz2")
+os.system("wget https://ftp.apnic.net/stats/apnic/" + year + "/delegated-apnic-extended-" + dateString + ".gz")
+os.system("wget https://ftp.ripe.net/pub/stats/ripencc/" + year + "/delegated-ripencc-extended-" + dateString + ".bz2")
 
 #Download PeeringDB file
-os.system("wget http://data.caida.org/datasets/peeringdb-v2/" + year + "/" + month + "/peeringdb_2_dump_" + year + "_" + month + "_01.json")
-pdbFile = baseDir + "/ip2as/" + "peeringdb_2_dump_" + year + "_" + month + "_01.json"
+os.system("wget http://data.caida.org/datasets/peeringdb-v2/" + pdbyear + "/" + pdbmonth + "/peeringdb_2_dump_" + pdbyear + "_" + pdbmonth + "_01.json")
+pdbFile = baseDir + "/ip2as/" + "peeringdb_2_dump_" + pdbyear + "_" + pdbmonth + "_01.json"
 
 #Move downloaded files to ip2as directory
 os.system("gunzip delegated-apnic-extended-" + dateString+ ".gz")

@@ -7,7 +7,7 @@ year = cfg.year
 month = cfg.month
 as2orgMonth = cfg.as2orgMonth
 ip2asFile = cfg.ip2asFile
-trDir = cfg.ripeOutput
+trDir = cfg.ripeInput
 asRelFile = cfg.asRel
 coneFile = cfg.custCone
 orgFile = cfg.as2org
@@ -18,7 +18,9 @@ outDir = cfg.outDir
 #generate json file, then run bdrmapit
 
 #get list of traceroutes
+print ("ls " + trDir + "*/* > tmpFiles.txt")
 os.system("ls " + trDir + "*/* > tmpFiles.txt") 
+#CHANGE BACK AGG
 trList = []
 with open('tmpFiles.txt', 'r') as f:
     rows = f.readlines()
@@ -36,8 +38,8 @@ with open('bdrmapit/config_bdrmapit.json','w+') as f:
     f.write(asRelFile)
     f.write('''", "cone": "''')
     f.write(coneFile)
-    f.write('''"}, "processes": ''')
-    f.write(proc)
+    f.write('''"}, "processes":''')
+    f.write(str(proc))
     f.write(''', "max_iterations":''')
     f.write(iterations)
     f.write(''', "atlas": {"files-list": [''')
