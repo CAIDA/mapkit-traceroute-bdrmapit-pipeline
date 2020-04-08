@@ -1,7 +1,9 @@
-This script downloads and prepares all the inputs required to run BdrmapIT on a set of recent traceroutes from RIPE. 
+This set of scripts download and prepare all the inputs required to run BdrmapIT on a set of recent traceroutes from RIPE. 
 Developed by Alexander Gamero-Garrido, CAIDA - UC San Diego.
 
 Development greatly benefitted from a previous version by Elverton Carvalho Fazzion and Rafael Almeida.
+
+**Note: if you are using CAIDA's shared installation at beamer.caida.org, proceed to step 4.**
 
 # First time installation
 
@@ -39,7 +41,10 @@ And set the virtual environment as the active development environment:
 
 `source bdrmapit/bin/activate`
 
-## Step 3. Install requirement libraries
+## Step 3. Install requirement libraries and download RIPE Traceroutes
+
+# Step 3.1
+(make sure you have the latest version as there are frequent updates with fixes)
 
 `pip install Cython`
 
@@ -47,13 +52,38 @@ And set the virtual environment as the active development environment:
 
 `pip install requests`
 
+# Step 3.2 Downloading traceroutes
+You may use this script to download traceroutes directly from RIPE (all public traceroutes from the past 30 days)
+
+`python download_ripe_traces.py`  
+
+Start and end dates are defined in `config.py` (see step 4.0.1) under variables `downloadStart` and `downloadFinish`
+
 # Running bdrmapit
+
+## Step 4. Preparing config and input data files
+
+### 4.0.0 Accessing CAIDA's shared installation (if applicable)
+CAIDA's shared installation is located at `beamer.caida.org:/project/mapkit/bdrmapit_pipeline`
+To activate the virtual environment there, run:
+
+`cd /project/mapkit/bdrmapit_pipeline`
+
+`source bdrmapit/bin/activate`
+
+### 4.0.1 Change Config File
 Start here on subsequent runs after first-time installation.
-Update the fields labeled `change-me` in the config.py with the correct dates and directories. 
-If you are using RIPE traceroutes, this is the only file you need to modify. 
+Update the fields labeled in the `config.py` file with the correct dates and directoriesas follows: 
 
-## Step 4. Preparing input data files
+`change-me-traceroutes` This is the input directory with traceroutes. You will have to change this every time you run the pipeline with a different input. (See step 4.2).
 
+`change-me-inputs` to make the input files point to the right directories and change configuration parameters. The default values will work on CAIDA machines (e.g., beamer.caida.org).
+
+`change-me-external` to fetch input files if you are not running the pipeline on a CAIDA machine.
+
+If you are using RIPE traceroutes, this is the only `.py` file you need to modify. 
+
+### 4.0.2 Prepare Input Files
 bdrmapit takes several input from CAIDA, PeeringDB and RIRs. Additionally, you'll need a set of traceroutes to use as input. 
 
 The following two sub-steps (4.1. and 4.2.) may be executed in parallel for efficiency (on separate screens).
@@ -66,10 +96,19 @@ See https://alexmarder.github.io/ip2as/ for a description of this intermediary i
 
 `python ip2as-prepare-inputs-and-run.py`
 
-### 4.2. You may now download a subset of all RIPE traceroutes from the last month:
-Note: the below script is a wrapper for a previous script written by Elverton and Rafael.
+### 4.2. Copy or download the RIPE traceroutes you want to use:
+Put any traceroutes you want to use as an input for BdrmapIT in a **subdirectory** of the directory listed in the `config.py` file with variable name `ripeOutput`.
 
-`python download_ripe_traces.py`
+In the default config file, `ripeOutput` points to `/scratch/mapkit/dlripetraces/2020_mar20/` which has a set of all publically available RIPE traceroutes in subdirectories as follows:
+`/scratch/mapkit/dlripetraces/2020_mar20/2020-03-20/traceroute-2020-03-20T**00.bz2`
+where ** is the time of day.
+
+If you are planning on using a large number of traceroutes (i.e., over 5GB), please put the input files in `/scratch/mapkit/<your_subdirectory>` or elsewhere where you have been allocated disk space if that directory is full. **This is to ensure that our production directory at /project/mapkit/ does not run out of space.**
+
+We at CAIDA are _currently_ (April 2020) downloading and keeping copies of all public RIPE traceroutes in the following directory:
+`/data/external/ripe-atlas-dumps/`. You may copy these files into your input directory, or create symbolic link subdirectories (see https://kb.iu.edu/d/abbe) in your input directory to the specific dates you want to use from `/data/external/ripe-atlas-dumps/`. 
+
+If you are using non-public measurements from RIPE, you will have to download those.
 
 ## Step 5. Running bdrmapit.
 
