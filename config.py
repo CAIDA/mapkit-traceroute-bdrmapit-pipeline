@@ -3,7 +3,7 @@
 baseDir = "/project/mapkit/bdrmapit_pipeline/"
 outDir = baseDir + "output/"
 
-#change-me-inputs Year and Month 
+#change-me-inputs Year and Month
 #This is the month used for all datasets except as2org and peeringDB
 
 year = "2020"
@@ -22,10 +22,10 @@ peeringDBMonth = "03"
 processes = 5
 maxIterations = "5"
 
-#change-me-external If you're on CAIDA's server (e.g., beamer.caida.org), these directories 
-#already have the required input files; 
+#change-me-external If you're on CAIDA's server (e.g., beamer.caida.org), these directories
+#already have the required input files;
 #if running elsewhere, follow the URLs next to each input file,
-#download the files (you may have to fill out a request form) and 
+#download the files (you may have to fill out a request form) and
 #modify the directories below to point towards your downloaded files
 dateString = year + month + "01"
 as2orgString = as2orgYear + as2orgMonth + "01"
@@ -45,14 +45,17 @@ pfx2as = "/data/routing/routeviews-prefix2as/" + year + "/" + month + "/" + "rou
 
 #change-me-external if you're not using the shared installation,
 #The following will be the input start and end
-#dates of script to download traceroutes 
+#dates of script to download traceroutes
 #directly from RIPE (README step 3.2)
 #end dates below, as well as a directory to save them to (each day takes about 21G of disk)
-downloadStart = "2020-03-20" 
-downloadFinish = "2020-03-22" 
+downloadStart = "2020-03-20"
+downloadFinish = "2020-03-22"
 
 #change-me-traceroutes: specify the directory where the RIPE atlas traceroutes are stored *in subdirectories* (see README step 4.2)
 ripeInput = "/scratch/mapkit/dlripetraces/2020_mar20/"
 
 #ip2as file (generated before running bdrmapIT)
 ip2asFile = baseDir + "ip2as/" + dateString + ".ip2as"
+
+# A path to a file that contains paths to warts files (one complete path per line).
+arkFiles=None

@@ -14,12 +14,13 @@ orgFile = cfg.as2org
 proc = cfg.processes
 iterations = cfg.maxIterations
 outDir = cfg.outDir
-#list traceroute files, save list to temp file and parse that file, 
+arkFiles = cfg.arkFiles
+#list traceroute files, save list to temp file and parse that file,
 #generate json file, then run bdrmapit
 
 #get list of traceroutes
 print ("ls " + trDir + "*/* > tmpFiles.txt")
-os.system("ls " + trDir + "*/* > tmpFiles.txt") 
+os.system("ls " + trDir + "*/* > tmpFiles.txt")
 #CHANGE BACK AGG
 trList = []
 with open('tmpFiles.txt', 'r') as f:
@@ -27,6 +28,9 @@ with open('tmpFiles.txt', 'r') as f:
     for i in range(len(rows)):
         row = rows[i].strip('\n')
         trList.append(row)
+
+if(arkFiles != None):
+    trListArk = [x.strip() for x in open(arkFiles)]
 
 #generate bdrmapit json file
 with open('bdrmapit/config_bdrmapit.json','w+') as f:
@@ -47,8 +51,18 @@ with open('bdrmapit/config_bdrmapit.json','w+') as f:
         if i < len(trList) - 1: #all but the last element
             f.write('''"''' + trList[i] + '''", ''')
         else:
-            f.write('''"''' + trList[i] + '''"]}}''')
-            
+            f.write('''"''' + trList[i] + '''"]}''')
+    f.write(''', "warts": {"files-list": [''')
+
+    if(arkFiles != None):
+        for i in range(len(trListArk)):
+            if i < len(trListArk) - 1: #all but the last element
+                f.write('''"''' + trListArk[i] + '''", ''')
+            else:
+                f.write('''"''' + trListArk[i] + '''"]}}''')
+    else:
+        f.write('''}''')
+
 #Download ip2as inputs
 #Download and decompress RIR delegation files
 os.system("cd ./ip2as")
